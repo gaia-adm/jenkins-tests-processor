@@ -1,5 +1,5 @@
 {
   "name": "jenkins/test",
-  "command": "python processor.py",
+  "command": "python processor_wrapper.py",
   "consumes" : [{"dataType": "jenkins/test"}]
 }
