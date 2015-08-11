@@ -1,0 +1,5 @@
+{
+  "name": "jenkins/test",
+  "command": "python processor.py",
+  "consumes" : [{"dataType": "jenkins/test"}]
+}

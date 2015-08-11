@@ -1,0 +1,10 @@
+Thumbs.db
+.idea
+__pycache__
+*.iml
+*.class
+target*/
+*.ipch
+*.prefs
+*.project
+*.classpath
