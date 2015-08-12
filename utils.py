@@ -3,9 +3,9 @@ import os
 def get_params():
     """
     Extracts metadata from process environment parameters into dictionary. It will extract content metadata and custom
-    metadata and return a tuple. Each value is a dictionary.
+    metadata and return a tuple. Each value is a dictionary. Key is always uppercase, value is case sensitive.
     """
-    content_metadata = {}  # content metadata - dataType, mimeType, charset, contentType (HTTP header value)
+    content_metadata = {}  # content metadata - DATATYPE, MIMETYPE, CHARSET, CONTENTTYPE (HTTP header value)
     custom_metadata = {}  # custom metadata
 
     for key, value in os.environ.items():

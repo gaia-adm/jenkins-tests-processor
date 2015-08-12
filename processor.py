@@ -12,6 +12,10 @@ def signal_handler(_signo, _stack_frame):
 signal.signal(signal.SIGTERM, signal_handler)
 
 def get_json_parser():
+    """
+    Returns a JSON parser. If possible yajl2 (written in C) wrapper is used, if not found a Python parser implementation
+    is used.
+    """
     ijson = None
     try:
         # try to use yajl dll/so first (faster)
@@ -23,6 +27,9 @@ def get_json_parser():
         return ijson
 
 def parseClassName(class_name):
+    """
+    Parses full class name into package and short class name.
+    """
     if class_name.endswith('.story'):
         # i.e stories/sanity/ci-sanity/myName.story
         index = class_name.rfind('/')
@@ -35,6 +42,9 @@ def parseClassName(class_name):
         return None, class_name
 
 def create_test_execution_event(content_metadata, custom_metadata, test_execution):
+    """
+    Creates code_testrun event for GAIA message gateway. For data format see https://github.com/gaia-adm/api-data-format.
+    """
     test_run_event = {'event': 'code_testrun'}
     test_run_event['time'] = datetime.utcfromtimestamp(int(custom_metadata['BUILD_TIMESTAMP']) / 1000).isoformat()
     # source
@@ -77,6 +87,10 @@ def create_test_execution_event(content_metadata, custom_metadata, test_executio
     return test_run_event
 
 def process_test_execution(content_metadata, custom_metadata, test_execution):
+    """
+    Processes single Jenkins test execution. Creates GAIA code_testrun event and writes it on STDOUT. Caller is
+    responsible for sending the data to message gateway.
+    """
     # create the test run event object
     event = create_test_execution_event(content_metadata, custom_metadata, test_execution)
     # write the object on stdout in JSON
