@@ -35,18 +35,6 @@ function setup_proxy()
     return 1
 }
 
-function install_python()
-{
-    echo "Installing python.."
-
-    apt-get update \
-    && apt-get -y -qq install python3=$PYTHON_VERSION \
-    && apt-get -y -qq install python3-pip=$PYTHON_PIP_VERSION \
-    && cd /usr/bin \
-    && ln -s python3 python \
-    && ln -s pip3 pip
-}
-
 function setup_processor()
 {
     echo "Setting up data processor.."
@@ -58,7 +46,6 @@ setup_proxy
 
 if [ $? -eq 0 ];then
     set -x
-    install_python
     setup_processor
 else
     echo "Unable to continue setup"
