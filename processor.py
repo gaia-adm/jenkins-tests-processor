@@ -49,7 +49,7 @@ def create_test_execution_event(content_metadata, custom_metadata, test_executio
     test_run_event['time'] = datetime.utcfromtimestamp(int(custom_metadata['BUILD_TIMESTAMP']) / 1000).isoformat()
     # source
     source = {}
-    source['location_uri'] = custom_metadata.get('LOCATION_URI')
+    source['build_server_uri'] = custom_metadata.get('BUILD_SERVER_URI')
     source['job_name'] = custom_metadata.get('JOB_NAME')
     source['root_job_name'] = custom_metadata.get('ROOT_JOB_NAME')
     test_run_event['source'] = source
@@ -77,12 +77,12 @@ def create_test_execution_event(content_metadata, custom_metadata, test_executio
     # result part
     result = {}
     result['status'] = test_execution['status']
-    result['error_details'] = test_execution.get('errorDetails')
+    result['error'] = test_execution.get('errorDetails')
     result['skipped'] = test_execution.get('skipped')
     result['skipped_message'] = test_execution.get('skippedMessage')
     result['failed_since'] = test_execution.get('failedSince')
     result['age'] = test_execution.get('age')
-    result['duration'] = float(test_execution.get('duration'))
+    result['run_time'] = float(test_execution.get('duration'))
     test_run_event['result'] = result
     return test_run_event
 
