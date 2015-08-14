@@ -2,7 +2,7 @@ CircleCI build status: [![Circle CI](https://circleci.com/gh/gaia-adm/jenkins-te
 
 # Jenkins tests data processor
 
-This is Jenkins test results data processor for GAIA analytics. It is based on "gaiaadm/result-processing" Docker image. It adds Python 3.4 and this data processor. It processes data format from <a href="http://{jenkins-host}:{port}/job/{jenkins-job}/{job-id}/testReport/api/json">http://{jenkins-host}:{port}/job/{jenkins-job}/{job-id}/testReport/api/json</a>
+This is Jenkins test results data processor for GAIA analytics. It is based on "gaiaadm/result-processing" Docker image. It processes data format from <a href="http://{jenkins-host}:{port}/job/{jenkins-job}/{job-id}/testReport/api/json">http://{jenkins-host}:{port}/job/{jenkins-job}/{job-id}/testReport/api/json</a>
 
 ## Building
 
