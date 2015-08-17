@@ -46,7 +46,8 @@ def create_test_execution_event(content_metadata, custom_metadata, test_executio
     Creates code_testrun event for GAIA message gateway. For data format see https://github.com/gaia-adm/api-data-format.
     """
     test_run_event = {'event': 'code_testrun'}
-    test_run_event['time'] = datetime.utcfromtimestamp(int(custom_metadata['BUILD_TIMESTAMP']) / 1000).isoformat()
+    test_run_event['time'] = datetime.utcfromtimestamp(int(custom_metadata['BUILD_TIMESTAMP']) / 1000)\
+        .replace(microsecond = 0).isoformat()
     # source
     source = {}
     source['build_server_uri'] = custom_metadata.get('BUILD_SERVER_URI')
