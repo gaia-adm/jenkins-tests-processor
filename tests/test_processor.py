@@ -18,13 +18,13 @@ class TestProcessor(unittest.TestCase):
                            'CUSTOM_TAGS': 'MYTAG1,MYTAG2', 'MYTAG1': 'MYTAG1_VALUE', 'MYTAG2': 'MYTAG2_VALUE'}
         output = execute_processor(data_file_path('jenkins-tests1.json'), custom_metadata=custom_metadata)
         output_json = json.loads(output.decode("utf-8"))
+        # print(output.decode("utf-8"))
 
         # this is what we expect
         with open(data_file_path('result-tests1.json'), "rt") as myfile:
             expected_json = json.load(myfile)
 
         compare(expected_json, output_json, strict=True)
-        # print(output)
 
 
 if __name__ == '__main__':
