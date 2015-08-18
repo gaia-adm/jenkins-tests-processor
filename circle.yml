@@ -6,7 +6,7 @@ dependencies:
     - docker build -t gaiaadm/jenkins-tests-processor:$BUILD_TAG .
 test:
   override:
-    - docker run --name unit-test-runner gaiaadm/jenkins-tests-processor:$BUILD_TAG cd /src/processors/jenkins-tests-processor && nosetests --with-xunit
+    - docker run --name unit-test-runner gaiaadm/jenkins-tests-processor:$BUILD_TAG /bin/sh -c "cd /src/processors/jenkins-tests-processor && nosetests --with-xunit"
     - docker cp unit-test-runner:/src/processors/jenkins-tests-processor/nosetests.xml $CIRCLE_TEST_REPORTS
 deployment:
   hub:
