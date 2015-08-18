@@ -39,10 +39,10 @@ function setup_processor()
 {
     echo "Setting up data processor.."
     # install any data processor dependencies here
-    pip install ijson
+    pip install ijson==2.2
     # test dependencies
-    pip install testfixtures
-    pip install nose
+    pip install testfixtures==4.2.0
+    pip install nose==1.3.7
 }
 
 setup_proxy
