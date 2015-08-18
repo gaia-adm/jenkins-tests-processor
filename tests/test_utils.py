@@ -67,5 +67,5 @@ def execute_processor(input_file, processor_descriptor_file=None, content_metada
     env.update(content_metadata)
     env.update(custom_metadata)
     with open(input_file, mode='rb') as input_file_obj:
-        output = subprocess.check_output(command, cwd=cwd, env=env, stdin=input_file_obj, timeout=5)
+        output = subprocess.check_output(command, cwd=cwd, env=env, stdin=input_file_obj, shell=True, timeout=5)
     return output
