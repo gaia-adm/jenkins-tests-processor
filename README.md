@@ -15,3 +15,8 @@ Execute:
 - docker run -d -e AMQ_USER="admin" -e AMQ_PASSWORD="mypass" -v "/tmp:/upload" --link rabbitmq:amqserver --link mgs:metricsgw --name jenkins-tests-processor gaiaadm/jenkins-tests-processor
 
 Note that for development it is recommended to mount a local directory containing result processor directory to /src/processors or mount the processor directory into /src/processors/{processorName}
+
+Executing tests:
+- nosetests --with-xunit
+or
+- python -m unittest discover -s tests -v
