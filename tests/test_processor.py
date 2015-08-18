@@ -26,6 +26,12 @@ class TestProcessor(unittest.TestCase):
 
         compare(expected_json, output_json, strict=True)
 
+    def test_yajl2_parser(self):
+        # verify that we get the yajl2 parser, not python one
+        from processor import get_json_parser
+        parser = get_json_parser()
+        self.assertIsNotNone(parser)
+        self.assertEqual('ijson.backends.yajl2', parser.__name__)
 
 if __name__ == '__main__':
     unittest.main()

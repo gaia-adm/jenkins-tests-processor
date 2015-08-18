@@ -5,12 +5,6 @@ import json
 from datetime import datetime
 from utils import get_params
 
-def signal_handler(_signo, _stack_frame):
-    sys.stderr.write('Caught ' + _signo + ', exiting')
-    sys.exit(1)
-
-signal.signal(signal.SIGTERM, signal_handler)
-
 def get_json_parser():
     """
     Returns a JSON parser. If possible yajl2 (written in C) wrapper is used, if not found a Python parser implementation
@@ -26,7 +20,7 @@ def get_json_parser():
     finally:
         return ijson
 
-def parseClassName(class_name):
+def parse_class_name(class_name):
     """
     Parses full class name into package and short class name.
     """
@@ -67,7 +61,7 @@ def create_test_execution_event(content_metadata, custom_metadata, test_executio
     # id part
     id = {}
     id['method'] = test_execution['name']
-    package, clazz = parseClassName(test_execution['className'])
+    package, clazz = parse_class_name(test_execution['className'])
     if package != None:
         id['package'] = package
     if clazz != None:
@@ -124,11 +118,19 @@ def process_tests_json(content_metadata, custom_metadata):
         # print(prefix + ':' + event + ':' + str(value))
     sys.stdout.write(']')
 
-content_metadata, custom_metadata = get_params()
+# when executed from command line
+def execute():
+    def signal_handler(_signo, _stack_frame):
+        sys.stderr.write('Caught ' + _signo + ', exiting')
+        sys.exit(1)
 
-if len(content_metadata) > 0:
-    process_tests_json(content_metadata, custom_metadata)
-else:
-    # no parameters, just exit
-    print('[]')
-    sys.exit(0)
+    signal.signal(signal.SIGTERM, signal_handler)
+
+    content_metadata, custom_metadata = get_params()
+
+    if len(content_metadata) > 0:
+        process_tests_json(content_metadata, custom_metadata)
+    else:
+        # no parameters, just exit
+        print('[]')
+        sys.exit(0)
