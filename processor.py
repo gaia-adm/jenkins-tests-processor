@@ -134,4 +134,3 @@ def execute():
         # no parameters, just exit
         print('[]')
         sys.exit(0)
-
