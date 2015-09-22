@@ -4,6 +4,7 @@ import signal
 import json
 from datetime import datetime
 from utils import get_params
+from urllib.parse import urlparse
 
 def get_json_parser():
     """
@@ -44,9 +45,11 @@ def create_test_execution_event(content_metadata, custom_metadata, test_executio
         .replace(microsecond = 0).isoformat()
     # source
     source = {}
-    source['build_server_uri'] = custom_metadata.get('BUILD_SERVER_URI')
+    source['build_server_uri'] = custom_metadata['BUILD_SERVER_URI']
+    source['build_server_host'] = urlparse(custom_metadata['BUILD_SERVER_URI']).hostname
     source['job_name'] = custom_metadata.get('JOB_NAME')
     source['root_job_name'] = custom_metadata.get('ROOT_JOB_NAME')
+    source['source_type'] = 'jenkins'
     test_run_event['source'] = source
     # tags
     tags = {}

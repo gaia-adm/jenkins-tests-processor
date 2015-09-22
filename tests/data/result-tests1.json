@@ -4,7 +4,9 @@
     "source": {
       "job_name": "test-executor",
       "root_job_name": "product-root",
-      "build_server_uri": "http://my-jenkins:8080"
+      "build_server_uri": "http://my-jenkins:8080",
+      "build_server_host": "my-jenkins",
+      "source_type": "jenkins"
     },
     "event": "code_testrun",
     "tags": {
@@ -35,7 +37,9 @@
     "source": {
       "job_name": "test-executor",
       "root_job_name": "product-root",
-      "build_server_uri": "http://my-jenkins:8080"
+      "build_server_uri": "http://my-jenkins:8080",
+      "build_server_host": "my-jenkins",
+      "source_type": "jenkins"
     },
     "event": "code_testrun",
     "tags": {
@@ -66,7 +70,9 @@
     "source": {
       "job_name": "test-executor",
       "root_job_name": "product-root",
-      "build_server_uri": "http://my-jenkins:8080"
+      "build_server_uri": "http://my-jenkins:8080",
+      "build_server_host": "my-jenkins",
+      "source_type": "jenkins"
     },
     "event": "code_testrun",
     "tags": {
