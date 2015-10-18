@@ -3,10 +3,11 @@ machine:
     - docker
 dependencies:
   override:
-    - docker build -t gaiaadm/jenkins-tests-processor:$BUILD_TAG .
+    - docker build -t gaiaadm/jenkins-tests-processor .
+    - docker tag gaiaadm/jenkins-tests-processor gaiaadm/jenkins-tests-processor:$CIRCLE_BUILD_NUM
 test:
   override:
-    - docker run --name unit-test-runner gaiaadm/jenkins-tests-processor:$BUILD_TAG /bin/sh -c "cd /src/processors/jenkins-tests-processor && nosetests --with-xunit"
+    - docker run --name unit-test-runner gaiaadm/jenkins-tests-processor /bin/sh -c "cd /src/processors/jenkins-tests-processor && nosetests --with-xunit"
     - docker cp unit-test-runner:/src/processors/jenkins-tests-processor/nosetests.xml $CIRCLE_TEST_REPORTS
 deployment:
   hub:
