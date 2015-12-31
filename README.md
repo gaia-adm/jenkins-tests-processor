@@ -2,6 +2,8 @@
 
 *CircleCI:* [![Circle CI](https://circleci.com/gh/gaia-adm/jenkins-tests-processor.svg?style=svg)](https://circleci.com/gh/gaia-adm/jenkins-tests-processor)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/e4cb719b791c4f669bcff93293039483)](https://www.codacy.com/app/alexei-led/jenkins-tests-processor)
+
 # Jenkins tests data processor
 
 This is Jenkins test results data processor for GAIA analytics. It is based on "gaiaadm/result-processing" Docker image. It processes data format from <a href="http://{jenkins-host}:{port}/job/{jenkins-job}/{job-id}/testReport/api/json">http://{jenkins-host}:{port}/job/{jenkins-job}/{job-id}/testReport/api/json</a>
