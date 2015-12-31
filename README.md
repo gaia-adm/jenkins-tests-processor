@@ -1,4 +1,6 @@
-CircleCI build status: [![Circle CI](https://circleci.com/gh/gaia-adm/jenkins-tests-processor.svg?style=svg)](https://circleci.com/gh/gaia-adm/jenkins-tests-processor)
+[![](https://badge.imagelayers.io/gaiaadm/jenkins-tests-processor:latest.svg)](https://imagelayers.io/?images=gaiaadm/jenkins-tests-processor:latest 'Get your own badge on imagelayers.io')
+
+*CircleCI:* [![Circle CI](https://circleci.com/gh/gaia-adm/jenkins-tests-processor.svg?style=svg)](https://circleci.com/gh/gaia-adm/jenkins-tests-processor)
 
 # Jenkins tests data processor
 
