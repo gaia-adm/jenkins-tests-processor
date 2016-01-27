@@ -7,7 +7,9 @@ This is Jenkins test results data processor for GAIA analytics. It is based on "
 ## Building
 
 Execute:
-- docker build -t gaiaadm/jenkins-tests-processor .
+```
+docker build -t gaiaadm/jenkins-tests-processor --build-arg http_proxy=$http_proxy --build-arg https_proxy=$https_proxy .
+```
 
 ## Running
 
